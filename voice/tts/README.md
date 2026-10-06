@@ -16,6 +16,8 @@ pip install -r requirements.txt
 
 The test scripts look for this environment at `voice/.venv`, so you don't have to activate it each time. To use a different Python, set the `PYTHON` variable, like this: `PYTHON=/path/to/python bash ./test.sh`.
 
+Some models need packages that clash with the shared environment. Those models have their own `.venv` and `requirements.txt` inside their folder. Set one up the same way, but run the commands from the model's folder. For example, Kokoro needs this, and I built its environment with Python 3.13.
+
 The first time you run a model, it downloads from Hugging Face. Some models are several GB. After that, it runs fully local, with no internet.
 
 ## How to run the script
