@@ -1,0 +1,7 @@
+# Kokoro has its own venv, built with Python 3.13.
+# misaki 0.7.5 and newer need Python 3.12 or older, so this stays on 0.7.4.
+mlx-audio==0.5.8
+misaki[en]==0.7.4
+spacy==3.8.16
+spacy-curated-transformers==0.3.1
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl#sha256=1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85
