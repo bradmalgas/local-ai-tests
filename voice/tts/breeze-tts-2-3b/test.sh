@@ -6,6 +6,8 @@ cd "$SCRIPT_DIR"
 
 # Variables
 # Edit these, or override them when running the script.
+# Breeze has no built-in voices. VOICE is a text description of the voice, not a name.
+# It keeps the name VOICE so every model's test.sh can run with the same command.
 TEXT=${TEXT:-"Let's begin. Meeting summary. We agreed to keep transcription local. The next action is to improve recording reliability."}
 VOICE=${VOICE:-"A young American woman in her mid-twenties, with a warm, friendly, conversational voice. Medium pitch, natural pace, clear and relaxed."}
 
