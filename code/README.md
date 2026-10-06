@@ -42,14 +42,19 @@ Because designing is very much subjective, my ranking might not match your own. 
 ### 1. Qwen 3.8 27B
 
 This model took the longest to run, coming in at just over 72 minutes. I actually thought it was going to produce nonsense but I must say I was pleasantly surprised with the output. It was genuinely impressive for a one-file page.
-All the nav links worked, the web page had a clean and consistent design and genuinely the only flaw I could find was a small glitch when the words switch in the hero section (see this video: [visual-glitch-hero-section.mp4](qwen3.8-27b/visual-glitch-hero-section.mp4)).
+All the nav links worked, the web page had a clean and consistent design and genuinely the only flaw I could find was a small glitch when the words switch in the hero section. Here is a clip of it:
+
+https://github.com/user-attachments/assets/ce3f0a7f-e04c-4e8f-a18e-48df692909c3
+
 Other than that this is by far the best local model I have ever run on coding tasks. I genuinely feel like a few months ago this is what you got from a paid subscription and now I get the same output from a model running locally on my laptop. I can only imagine what we'll be running a year from now.
 
 ![Qwen 3.8 27B home page](screenshots/qwen3.8-27b.png)
 
 ### 2. Gemma 4 26B A4B
 
-The Gemma model is by far the cleanest. It has a very minimal design and the website was very basic. To be fair this is more a reflection on how bad my prompting skills were, but in general this is very clean for a local model. I think I prefer this aesthetic over Qwen 3.8 simply because it doesn't add anything that isn't completely necessary. I am very sure that if I were to prompt better, I could get really good output from this model. Also, comparing the time, this model ran much quicker (84 seconds, against 72 minutes) for a pretty good final design. The only flaw on this page was a sizing issue during the opening animation. The text starts off shrunk and grows, but in doing so the lines split as the text gets bigger (see this video: [text-resizing-glitch-hero-section.mp4](gemma-4-26b-a4b-qat/text-resizing-glitch-hero-section.mp4)).
+The Gemma model is by far the cleanest. It has a very minimal design and the website was very basic. To be fair this is more a reflection on how bad my prompting skills were, but in general this is very clean for a local model. I think I prefer this aesthetic over Qwen 3.8 simply because it doesn't add anything that isn't completely necessary. I am very sure that if I were to prompt better, I could get really good output from this model. Also, comparing the time, this model ran much quicker (84 seconds, against 72 minutes) for a pretty good final design. The only flaw on this page was a sizing issue during the opening animation. The text starts off shrunk and grows, but in doing so the lines split as the text gets bigger. Here is a clip of it:
+
+https://github.com/user-attachments/assets/3c869d47-2b3c-47f4-b79f-8b720faaf58c
 
 ![Gemma 4 26B A4B home page](screenshots/gemma-4-26b-a4b-qat.png)
 
