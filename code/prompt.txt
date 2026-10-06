@@ -1,0 +1,18 @@
+Act as an expert frontend developer and UI/UX designer. Your task is to build a premium, high-converting landing page for a next-gen AI startup called "BlueMetric".
+
+CRITICAL CONSTRAINT: You must output exactly ONE file: a fully self-contained `index.html`. Do not split the code into separate CSS or JS files. All styling and logic must be contained within `<style>` and `<script>` tags. You are highly encouraged to use Tailwind CSS via CDN for styling, as well as CDNs for Google Fonts and FontAwesome.
+
+Design & Layout Requirements:
+1. Theme: Modern, sleek "dark mode" aesthetic (deep blacks/slate) with vibrant electric blue and cyan gradients to match the "BlueMetric" brand. Incorporate glassmorphism (frosted glass) effects on cards and navbars.
+2. Structure:
+   - Sticky Navigation (Logo, smooth-scroll anchor links, and a highlighted "Get Early Access" button).
+   - Hero Section (Compelling headline, sub-headline, dual CTA buttons, and a visually striking CSS/JS animation representing data flow or a neural network).
+   - Features Section (A responsive grid of 3-4 feature cards with icons).
+   - Footer (Simple copyright and social links).
+3. Animations (MANDATORY):
+   - Smooth fade-in/slide-up animations for elements as the page loads.
+   - Interactive hover states on all buttons and feature cards (scale up, shadow glow).
+   - A continuous, lightweight background animation in the Hero section using vanilla JavaScript or pure CSS (e.g., floating glowing orbs, a typing effect, or moving gradient mesh).
+4. Responsiveness: The layout must use Flexbox/Grid and look flawless on mobile, tablet, and desktop screens.
+
+Do not write explanations. Output only the complete, functional HTML code in a single code block, ready to be opened in a browser.

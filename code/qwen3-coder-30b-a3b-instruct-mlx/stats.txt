@@ -1,0 +1,3 @@
+68.25 tok/sec
+3295 tokens
+0.57s TTFT

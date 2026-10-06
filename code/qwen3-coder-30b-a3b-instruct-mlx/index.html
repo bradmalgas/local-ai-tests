@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlueMetric - Next-Gen AI Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary-blue: #00b4ff;
+      --secondary-cyan: #00f5ff;
+      --dark-bg: #0a0a14;
+      --card-glass: rgba(255, 255, 255, 0.05);
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hero-bg {
+      background: linear-gradient(135deg, rgba(0, 180, 255, 0.1), rgba(0, 245, 255, 0.1)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a0a14"/><circle cx="20" cy="20" r="2" fill="%2300b4ff" opacity="0.5"/><circle cx="60" cy="60" r="3" fill="%2300f5ff" opacity="0.7"/><circle cx="90" cy="10" r="1" fill="%2300b4ff" opacity="0.5"/></svg>');
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      box-shadow: 0 0 15px var(--primary-blue), 0 0 30px rgba(0, 180, 255, 0.5);
+    }
+
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(25px);
+      opacity: 0.6;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 180, 255, 0.3);
+    }
+
+    .animate-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: typing 3.5s steps(40, end), blink 0.5s infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid var(--primary-blue);
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      from { border-color: transparent; }
+      to { border-color: var(--primary-blue); }
+    }
+
+    .glass-card {
+      backdrop-filter: blur(12px);
+      background: var(--card-glass);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-dark-bg text-white">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+          <i class="fas fa-wave-square text-white"></i>
+        </div>
+        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">BlueMetric</span>
+      </div>
+
+      <div class="hidden md:flex space-x-8">
+        <a href="#features" class="hover:text-cyan-300 transition">Features</a>
+        <a href="#how-it-works" class="hover:text-cyan-300 transition">How It Works</a>
+        <a href="#testimonials" class="hover:text-cyan-300 transition">Testimonials</a>
+      </div>
+
+      <button class="px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:from-blue-700 hover:to-cyan-600 transition-all glow">
+        Get Early Access
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <!-- Floating Orbs -->
+      <div id="orbs-container"></div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16 text-center relative z-10">
+      <h1 class="hero-title text-4xl md:text-6xl font-extrabold mb-6">
+        AI-Powered Insights for the Future
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto">
+        BlueMetric transforms raw data into actionable intelligence — all powered by next-gen AI.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:from-blue-700 hover:to-cyan-600 transition-all glow">
+          Get Early Access
+        </button>
+        <button class="px-8 py-3 rounded-full bg-black/20 backdrop-blur-lg border border-white/10 text-white font-semibold hover:bg-black/30 transition-all">
+          View Demo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fade-in">
+        Advanced AI Analytics
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="glass-card p-6 rounded-xl text-center animate-fade-in feature-card">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+            <i class="fas fa-brain text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Predictive Modeling</h3>
+          <p class="text-gray-400">
+            Forecast trends and behaviors with machine learning that adapts in real time.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-card p-6 rounded-xl text-center animate-fade-in feature-card">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+            <i class="fas fa-chart-line text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Real-Time Insights</h3>
+          <p class="text-gray-400">
+            Instantly analyze massive datasets with zero latency or delays.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-card p-6 rounded-xl text-center animate-fade-in feature-card">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+            <i class="fas fa-shield-alt text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Secure Data</h3>
+          <p class="text-gray-400">
+            End-to-end encryption ensures your data remains private and secure.
+          </p>
+        </div>
+
+        <!-- Feature 4 (optional) -->
+        <div class="glass-card p-6 rounded-xl text-center animate-fade-in feature-card">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+            <i class="fas fa-bolt text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Auto-Optimization</h3>
+          <p class="text-gray-400">
+            Our AI adapts to your data patterns for optimal performance without human input.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 px-4 border-t border-white/10">
+    <div class="container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center space-x-2 mb-4 md:mb-0">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+          <i class="fas fa-wave-square text-white"></i>
+        </div>
+        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">BlueMetric</span>
+      </div>
+
+      <div class="flex space-x-6 mb-4 md:mb-0">
+        <a href="#" class="text-gray-400 hover:text-cyan-300"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-gray-400 hover:text-cyan-300"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="text-gray-400 hover:text-cyan-300"><i class="fab fa-github"></i></a>
+        <a href="#" class="text-gray-400 hover:text-cyan-300"><i class="fab fa-discord"></i></a>
+      </div>
+
+      <p class="text-gray-500 text-sm">
+        &copy; 2023 BlueMetric. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Floating Orbs Animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const orbsContainer = document.getElementById('orbs-container');
+      const orbCount = 15;
+
+      for (let i = 0; i < orbCount; i++) {
+        const orb = document.createElement('div');
+        orb.classList.add('floating-orb');
+
+        // Random size and position
+        const size = Math.random() * 100 + 20;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+
+        orb.style.width = `${size}px`;
+        orb.style.height = `${size}px`;
+        orb.style.left = `${posX}%`;
+        orb.style.top = `${posY}%`;
+
+        const colors = ['#00b4ff', '#00f5ff', '#38ef7d'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        orb.style.background = `radial-gradient(circle, ${color}, transparent)`;
+
+        orbsContainer.appendChild(orb);
+      }
+
+      // Animate orbs
+      const orbs = document.querySelectorAll('.floating-orb');
+      orbs.forEach(orb => {
+        const duration = 15 + Math.random() * 20;
+        const delay = Math.random() * 10;
+
+        orb.style.animation = `float ${duration}s ease-in-out infinite`;
+        orb.style.animationDelay = `${delay}s`;
+      });
+
+      const style = document.createElement('style');
+      style.innerHTML = `
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0); }
+          25% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px); }
+          50% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px); }
+          75% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px); }
+        }
+      `;
+      document.head.appendChild(style);
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
