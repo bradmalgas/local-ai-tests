@@ -41,6 +41,8 @@ Because designing is very much subjective, my ranking might not match your own. 
 
 ### 1. Qwen 3.8 27B
 
+![Qwen 3.8 27B home page](screenshots/qwen3.8-27b.png)
+
 This model took the longest to run, coming in at just over 72 minutes. I actually thought it was going to produce nonsense but I must say I was pleasantly surprised with the output. It was genuinely impressive for a one-file page.
 All the nav links worked, the web page had a clean and consistent design and genuinely the only flaw I could find was a small glitch when the words switch in the hero section. Here is a clip of it:
 
@@ -48,25 +50,21 @@ https://github.com/user-attachments/assets/ce3f0a7f-e04c-4e8f-a18e-48df692909c3
 
 Other than that this is by far the best local model I have ever run on coding tasks. I genuinely feel like a few months ago this is what you got from a paid subscription and now I get the same output from a model running locally on my laptop. I can only imagine what we'll be running a year from now.
 
-![Qwen 3.8 27B home page](screenshots/qwen3.8-27b.png)
-
 ### 2. Gemma 4 26B A4B
+
+![Gemma 4 26B A4B home page](screenshots/gemma-4-26b-a4b-qat.png)
 
 The Gemma model is by far the cleanest. It has a very minimal design and the website was very basic. To be fair this is more a reflection on how bad my prompting skills were, but in general this is very clean for a local model. I think I prefer this aesthetic over Qwen 3.8 simply because it doesn't add anything that isn't completely necessary. I am very sure that if I were to prompt better, I could get really good output from this model. Also, comparing the time, this model ran much quicker (84 seconds, against 72 minutes) for a pretty good final design. The only flaw on this page was a sizing issue during the opening animation. The text starts off shrunk and grows, but in doing so the lines split as the text gets bigger. Here is a clip of it:
 
 https://github.com/user-attachments/assets/3c869d47-2b3c-47f4-b79f-8b720faaf58c
 
-![Gemma 4 26B A4B home page](screenshots/gemma-4-26b-a4b-qat.png)
-
 ### 3. Qwen3 Coder 30B A3B
-
-This model was pretty disappointing to be honest. The model needs about 16 GB of memory just to load, which is more than Qwen 3.8 needs (15 GB), and Qwen 3.8 was far more capable. The design was extremely basic and the background felt like an incomplete design. The navbar was extremely narrow in height and the buttons had a persistent glow, as if you were hovering over them. The hero section also has a headline that looks like the bottom of the text is cut off. I explain why that happens in the [code quality](#code-quality) section below.
 
 ![Qwen3 Coder 30B A3B home page](screenshots/qwen3-coder-30b-a3b-instruct-mlx.png)
 
-### 4. Qwen2.5 Coder 7B
+This model was pretty disappointing to be honest. The model needs about 16 GB of memory just to load, which is more than Qwen 3.8 needs (15 GB), and Qwen 3.8 was far more capable. The design was extremely basic and the background felt like an incomplete design. The navbar was extremely narrow in height and the buttons had a persistent glow, as if you were hovering over them. The hero section also has a headline that looks like the bottom of the text is cut off. I explain why that happens in the [code quality](#code-quality) section below.
 
-I do think this was unfair, pitting this against much larger models, but I also wanted to demonstrate what is possible on more constrained hardware. Unfortunately the result is unusable. The model produced broken HTML that didn't show anything, because the background was being drawn above the main content. Even when I fixed the dead logo and moved the background layer behind the content (see the [fix log](#fix-log) below), the resulting page looks like a high schooler who just started a YouTube tutorial but got bored halfway through. The navbar items are not aligned either: the links sit higher than the button. Harsh, yes, but it's true.
+### 4. Qwen2.5 Coder 7B
 
 As generated (the hero is hidden behind the background):
 
@@ -75,6 +73,8 @@ As generated (the hero is hidden behind the background):
 With the fixes from the fix log:
 
 ![Qwen2.5 Coder 7B home page, fixed copy](screenshots/qwen2.5-coder-7b-fixed.png)
+
+I do think this was unfair, pitting this against much larger models, but I also wanted to demonstrate what is possible on more constrained hardware. Unfortunately the result is unusable. The model produced broken HTML that didn't show anything, because the background was being drawn above the main content. Even when I fixed the dead logo and moved the background layer behind the content (see the [fix log](#fix-log) below), the resulting page looks like a high schooler who just started a YouTube tutorial but got bored halfway through. The navbar items are not aligned either: the links sit higher than the button. Harsh, yes, but it's true.
 
 ## Code quality
 
