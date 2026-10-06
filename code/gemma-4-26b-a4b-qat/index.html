@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueMetric | Next-Gen AI Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #f8fafc; /* slate-50 */
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-chart-line text-white text-sm"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight">BlueMetric</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
+                <a href="#features" class="nav-link hover:text-blue-400">Features</a>
+                <a href="#about" class="nav-link hover:text-blue-400">Technology</a>
+                <a href="#contact" class="nav-link hover:text-blue-400">Pricing</a>
+            </div>
+
+            <a href="#early-access" class="btn-gradient px-5 py-2.5 rounded-full text-sm font-semibold text-white">
+                Get Early Access
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
+        <canvas id="hero-canvas"></canvas>
+        
+        <div class="relative z-10 text-center max-w-4xl">
+            <div class="reveal inline-block px-4 py-1.5 mb-6 border border-blue-500/30 rounded-full bg-blue-500/10 text-blue-400 text-sm font-medium">
+                <span class="relative z-10">🚀 Revolutionizing Data Intelligence</span>
+            </div>
+            <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6">
+                Quantifying <span class="text-gradient">Intelligence</span>
+            </h1>
+            <p class="reveal text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                BlueMetric leverages neural-mesh architecture to transform fragmented data into actionable, high-fidelity business insights in real-time.
+            </p>
+            <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#early-access" class="w-full sm:w-auto btn-gradient px-8 py-4 rounded-xl text-lg font-bold">
+                    Start Free Trial
+                </a>
+                <a href="#features" class="w-full sm:w-auto px-8 py-4 rounded-xl text-lg font-semibold border border-slate-700 hover:bg-slate-800 transition-all">
+                    View Capabilities
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500">
+            <i class="fas fa-chevron-down text-xl"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="reveal text-blue-500 font-bold tracking-widest uppercase text-sm mb-3">Core Capabilities</h2>
+                <p class="reveal text-4xl md:text-5xl font-bold">Engineered for Precision</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="reveal feature-card glass p-8 rounded-3xl">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Real-time Velocity</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Process millions of data points per second with ultra-low latency, ensuring your decisions are always based on the latest metrics.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="reveal feature-card glass p-8 rounded-3xl">
+                    <div class="w-14 h-14 bg-cyan-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-cyan-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Neural Analysis</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Our proprietary AI models identify non-linear patterns that traditional analytics tools miss, uncovering hidden growth drivers.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="reveal feature-card glass p-8 rounded-3xl">
+                    <div class="w-14 h-14 bg-indigo-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-halved text-indigo-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Secure by Design</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Enterprise-grade encryption and SOC2 compliance. Your data is processed in secure silos with absolute privacy protection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="early-access" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto glass rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                <div class="absolute top-0 left-1/4 w-64 h-64 bg-blue-600 rounded-full filter blur-[100px]"></div>
+                <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-cyan-500 rounded-full filter blur-[100px]"></div>
+            </div>
+            
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Ready to Scale?</h2>
+                <p class="text-slate-300 text-lg mb-10 max-w-xl mx-auto">
+                    Join 500+ leading innovators using BlueMetric to power their data-driven transformations.
+                </p>
+                <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Enter your work email" class="flex-1 bg-slate-900/50 border border-slate-700 rounded-xl px-6 py-4 focus:outline-none focus:border-blue-500 transition-all">
+                    <button type="submit" class="btn-gradient px-8 py-4 rounded-xl font-bold">
+                        Join Waitlist
+                    </button>
+                </form>
+                <p class="mt-6 text-slate-500 text-sm">No credit card required. No spam, ever.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-6 md:mb-0">
+                <div class="w-6 h-6 bg-blue-500 rounded flex items-center justify-center">
+                    <i class="fas fa-chart-line text-[10px] text-white"></i>
+                </div>
+                <span class="text-lg font-bold">BlueMetric</span>
+            </div>
+            <div class="flex space-x-8 text-slate-500 text-sm mb-6 md:mb-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </div>
+            <div class="flex space-x-6 text-xl text-slate-500">
+                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-8 text-center text-slate-600 text-xs">
+            &copy; 2024 BlueMetric AI Technologies Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Hero Canvas Animation: Particle Network
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            const particleCount = 80;
+            for (let i = 0; i < particleCount; i++) {
+                let size = Math.random() * 2 + 1;
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                let directionX = (Math.random() - 0.5) * 0.5;
+                let directionY = (Math.random() - 0.5) * 0.5;
+                let color = i % 2 === 0 ? '#3b82f6' : '#22d3ee';
+
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * 
+                                    (particlesArray[a].x - particlesArray[b].x)) + 
+                                   ((particlesArray[a].y - particlesArray[b].y) * 
+                                    (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < 150000) { // Connection radius
+                        ctx.beginPath();
+                        ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)';
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+
+        // Scroll Reveal Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
