@@ -38,3 +38,7 @@ Some models also have additional parameters, you can look at the model's documen
 ## Output format
 
 Running the test script will produce a wav file that contains the text provided.
+
+## Known problems
+
+- **Maya1:** `mlx_audio` builds the wrong prompt for it, so it has its own script. See [`maya1-3b/README.md`](maya1-3b/README.md).
