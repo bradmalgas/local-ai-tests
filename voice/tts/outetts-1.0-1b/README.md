@@ -38,3 +38,5 @@ TEXT="This is a sample sentence for the model." bash ./test.sh
 ## Sample output
 
 A sample from my run is in `audio/tts/`. It is not perfect. The voice is a little rushed. I am showing what the model does with these settings, not trying to make it sound better than it can.
+
+The folder `audio/before-fixes/` holds one older sample. I made it before I set `--temperature 0.4` (see problem 2 above). The voice sighs and rushes. The script no longer makes it. I kept it as a "before" example.

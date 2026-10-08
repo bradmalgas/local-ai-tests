@@ -92,4 +92,8 @@ TEXT="This is a sample sentence for the model." bash ./test.sh
 
 ## Sample output
 
-Each run saves a new wav file in `audio/tts/`, named with the date and time. Some older files there come from the tests with `mlx_audio`. They show the buzz from problem 4. I kept them as "before" examples.
+Each run saves a new wav file in `audio/tts/`, named with the date and time.
+
+The clip in `audio/tts/` now comes from the `mlx_audio` route, with no voice description. It sounds like a robot that reads a document. It is only there until `generate.py` can save audio.
+
+The folder `audio/mlx-audio-route/` holds one clip made with a voice description. It has the buzz from problem 4. The script no longer makes it. I kept it as a "before" example.
