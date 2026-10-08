@@ -97,6 +97,26 @@ The clip with no full stop was more than twice as long. The extra 6 seconds is a
 
 A description from the list in "Writing a voice description" did not have this problem.
 
+## Known issue: some takes end a little early
+
+About a third of the takes stop a little before the last word is done. In my last listening test, 4 of 12 takes were cut or slightly cut at the end, and 1 more had a tiny cutoff. The temperature (0.4 or 0.6) made no clear difference. It is random, so if you hear it, run it again.
+
+I tried to fix it. None of these worked:
+
+- **Silence at the end.** The cut take was still cut. Silence cannot add a word that the model did not say.
+- **A fade out on the last 50 ms.** It hides a hard cut, but it does not bring back the sound.
+- **Looking at the end token.** The model stops on its own end token, and it stops after a full frame of 7 tokens. So my unpack was not losing anything.
+- **Retrying when the end is loud.** The cut takes end on a soft sound (like the end of "reliability"), so a check for loudness never found them. In my second round it did not trigger once.
+- **The length of the speech as a guide.** The cut takes were short in one round, but in the next round some perfect takes were just as short. Short clips are cut more often, but not reliably.
+
+I could not find a check that finds a bad take. Only listening works. I stopped here, because Maya1 was not worth more days of work.
+
+## Known issue: it can say words that are not in the text
+
+In the blind ranking, I gave every model a longer text of three sentences (62 words). Maya1 lost the text near the end. Instead of "stories about the trains their parents used to take" it said "sixty one toys explored and against house the fourteen answers in question", and kept going. The pacing in that clip was also bad, with no stops between the sentences. It ranked last of the nine because of this.
+
+I saw it in one take, so I do not know how often it happens. I did not hear it with the short test sentence. I did not try to fix it.
+
 ## Run it
 
 Set up the environment once. Run these commands from this folder:
