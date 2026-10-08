@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 The test scripts look for this environment at `voice/.venv`, so you don't have to activate it each time. To use a different Python, set the `PYTHON` variable, like this: `PYTHON=/path/to/python bash ./test.sh`.
 
-Some models need packages that clash with the shared environment. Those models have their own `.venv` and `requirements.txt` inside their folder. Set one up the same way, but run the commands from the model's folder. For example, Kokoro needs this, and I built its environment with Python 3.13.
+Some models need packages that clash with the shared environment. Those models have their own `.venv` and `requirements.txt` inside their folder. Set one up the same way, but run the commands from the model's folder. Kokoro and Maya1 need this. I built the Kokoro environment with Python 3.13.
 
 The first time you run a model, it downloads from Hugging Face. Some models are several GB. After that, it runs fully local, with no internet.
 
@@ -38,6 +38,70 @@ Some models also have additional parameters, you can look at the model's documen
 ## Output format
 
 Running the test script will produce a wav file that contains the text provided.
+
+## The models
+
+Every model said the same sentence (18 words, about four short sentences). I ran each one once. I ran everything (mostly) with the default voice of the model.
+
+| Model                                             | Download                                                                                                          | Size   | Voice                       | Own `.venv` |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------ | --------------------------- | ----------- |
+| [Orpheus 3B](orpheus-3b/test.sh)                  | [`mlx-community/orpheus-3b-0.1-ft-bf16`](https://huggingface.co/mlx-community/orpheus-3b-0.1-ft-bf16)             | 6.2 GB | `tara`                      | no          |
+| [Kokoro 82M](kokoro-82m/test.sh)                  | [`mlx-community/Kokoro-82M-bf16`](https://huggingface.co/mlx-community/Kokoro-82M-bf16)                           | 339 MB | `af_heart`                  | yes         |
+| [Breeze TTS 2](breeze-tts-2-3b/README.md)         | [`mlx-community/Breeze-TTS-2-mlx`](https://huggingface.co/mlx-community/Breeze-TTS-2-mlx)                         | 7.1 GB | a text description          | no          |
+| [Chatterbox](chatterbox/test.sh)                  | [`mlx-community/chatterbox-fp16`](https://huggingface.co/mlx-community/chatterbox-fp16)                           | 2.4 GB | the one in the model repo   | no          |
+| [Chatterbox Turbo](chatterbox-turbo/test.sh)      | [`mlx-community/chatterbox-turbo-fp16`](https://huggingface.co/mlx-community/chatterbox-turbo-fp16)               | 2.8 GB | the one in the model repo   | no          |
+| [Voxtral 4B TTS](voxtral-4b-tts/test.sh)          | [`mlx-community/Voxtral-4B-TTS-2603-mlx-bf16`](https://huggingface.co/mlx-community/Voxtral-4B-TTS-2603-mlx-bf16) | 7.5 GB | `neutral_female`            | no          |
+| [OuteTTS 1.0 1B](outetts-1.0-1b/README.md)        | [`mlx-community/Llama-OuteTTS-1.0-1B-fp16`](https://huggingface.co/mlx-community/Llama-OuteTTS-1.0-1B-fp16)       | 2.3 GB | the one speaker that ships  | no          |
+| [Fish Audio S2 Pro](fish-audio-s2-pro-5b/test.sh) | [`mlx-community/fish-audio-s2-pro-bf16`](https://huggingface.co/mlx-community/fish-audio-s2-pro-bf16)             | 10 GB  | the default (no voice flag) | no          |
+| [Maya1](maya1-3b/README.md)                       | [`mlx-community/maya1-4bit`](https://huggingface.co/mlx-community/maya1-4bit)                                     | 1.8 GB | a text description          | yes         |
+
+Maya1 is not finished. The current sample comes from the `mlx_audio` route, which does not sound greatl (see below). I am working on a custom script to run it.
+
+## The numbers
+
+These are the lengths of the `.wav` files from one run each. I didn't time any of the runs, so there is no speed column. Plus it would vary depending on hardware.
+
+| Model                     | Length of the sample |
+| ------------------------- | -------------------- |
+| Orpheus 3B                | 10.4 s               |
+| OuteTTS 1.0 1B            | 10.4 s               |
+| Voxtral 4B TTS            | 9.8 s                |
+| Fish Audio S2 Pro         | 8.6 s                |
+| Breeze TTS 2              | 8.3 s                |
+| Kokoro 82M                | 8.2 s                |
+| Maya1 (`mlx_audio` route) | 7.5 s                |
+| Chatterbox Turbo          | 7.2 s                |
+| Chatterbox                | 7.1 s                |
+
+A longer clip is not a better clip. It only means the voice speaks more slowly, or pauses more. Listen to the samples in each `audio/tts/` folder and decide for yourself. You can open two folders side by side to compare.
+
+## What went wrong, model by model
+
+Most of the work was not the AI. It was the setup. Most models needed their own fix before they would run. Orpheus and Fish are not in this table, because I have nothing special to report for them (which is good).
+
+| Model                        | Problem                                                                                                                                                                                                      | Fix                                                                                    |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| Kokoro                       | `mlx_audio` says "install misaki", but the real error was a missing package (`num2words`). A plain install of `misaki[en]` then pulled a spaCy 4 development version which was not supported in my workflow. | The Kokoro `.venv` has its own `requirements.txt` with exact versions, on Python 3.13. |
+| Breeze                       | Without guidance the voice sounded a lot worse.                                                                                                                                                              | `--cfg_scale 4`. See the [Breeze README](breeze-tts-2-3b/README.md).                   |
+| Chatterbox, Chatterbox Turbo | Some repos have no default voice file (`conds.safetensors`), so they fail with "No conditionals available".                                                                                                  | I use the `chatterbox-fp16` and `chatterbox-turbo-fp16` repos. They have the file.     |
+| Voxtral                      | Its tokenizer needs extra packages that `mlx_audio` does not install.                                                                                                                                        | `mlx-audio[tts]` in `voice/requirements.txt`.                                          |
+| OuteTTS                      | `--voice` is a file, not a name. The command line overrides the temperature of the model. The default token limit cuts the speech at about 7 seconds.                                                        | See the [OuteTTS README](outetts-1.0-1b/README.md).                                    |
+| Maya1                        | The repo holds extra weight files, and `mlx_audio` builds the wrong prompt.                                                                                                                                  | See the [Maya1 README](maya1-3b/README.md).                                            |
+
+## What I learned
+
+- **Check the weights first.** A model name that sounds right can be the wrong format. Kokoro's original repo has `.pth` files, and `mlx_audio` only loads MLX weights. Look at the file list on Hugging Face before you download.
+- **The command line can override the model.** `mlx_audio` sets its own defaults, such as temperature 0.7 and a token limit of 1200. These can be worse than the defaults of the model. If a voice sounds odd, check the flags first.
+- **A "voice" is not the same thing in every model.** It is a name in Orpheus, Kokoro and Voxtral. It is a text description in Breeze and Maya1. It is a file in OuteTTS. It is built in for Chatterbox. I kept the variable `VOICE` in every `test.sh`, so you can run each one the same way.
+- **A long error message may not tell the truth.** For Kokoro, the library suggested one package, and the real error was in another. Run the import by hand to see it.
+- **Pin your versions.** A package with no version limit can pull a development release. Kokoro's `requirements.txt` has exact versions from `pip freeze`.
+- **A model can be supported and still run wrong.** `mlx_audio` loads Maya1, but it builds the prompt the way Orpheus does. The audio came out as a buzz. The model needed its own script.
+
+## Not done
+
+- **Magpie TTS Multilingual (357M).** I did not test it. It is not in `mlx_audio`. It needs NVIDIA's NeMo-Speech.cpp, and the GPU backend of that tool gives a flat signal on Apple Silicon. It would run on the CPU only.
+- **Voice cloning.** I did not start it. It will go in `voice/clone/`.
+- **Maya1.** The script of my own is not finished.
 
 ## Known problems
 

@@ -54,10 +54,10 @@ The exact models I used for the code tests are listed in the [code test results]
 - **Code:** can a local model write decent code? **Done for now.** I gave four models the same prompt and compared the pages they built. See the [code test results](code/README.md).
 - **Images:** make and edit pictures (my expectations are low for this)
 - **Video:** make short clips from text or from a start image. (I hope my Macbook doesn't explode lol)
-- **Voice:** read text aloud with default voices, and clone a voice from a short recording.
+- **Voice:** read text aloud with default voices, and clone a voice from a short recording. **Reading aloud is done for now.** I gave nine models the same sentence. Maya1 is not finished yet. See the [voice test results](voice/tts/README.md). Cloning is next.
 
 The idea is to tackle it one model at a time, and keep this repo as a sort of audit trail of what worked.
 
 ## Status
 
-The code tests are done, with results and screenshots. Voice, text, images and video are next. This README will grow as I add models and results.
+The code tests are done, with results and screenshots. The voice reading tests are done for nine models, with samples. The Maya1 test needs a script of my own, and it is not finished. Voice cloning, text, images and video are next. This README will grow as I add models and results.
