@@ -1,0 +1,2 @@
+# [tts] adds the extra packages that Voxtral needs (mistral-common and sentencepiece).
+mlx-audio[tts]==0.5.8

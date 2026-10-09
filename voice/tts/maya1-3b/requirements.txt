@@ -1,0 +1,5 @@
+mlx-lm
+snac
+mlx-audio
+soundfile
+numpy
